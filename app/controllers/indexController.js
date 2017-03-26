@@ -1,3 +1,3 @@
 exports.index = function(req,res){
-    res.json({"header":"Hello world"})
+    res.json({"userName":req.user.userName});
 }

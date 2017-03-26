@@ -7,10 +7,12 @@ const mongoose = require('mongoose')
 
 module.exports = function(){
     mongoose.set('debug',config.debug);
+    mongoose.Promise = global.Promise;
     const db = mongoose.connect(config.mongoUri);
     db.Collection(config.mongoName,function(err, collection) {});
 
     /* insert your Models here */
     require('../app/models/userModel');
+    
     return db;
 }

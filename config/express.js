@@ -4,6 +4,7 @@ const compression = require('compression');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const config = require('./config');
+const passport = require('passport');
 
 module.exports = function(){
     const app = express();
@@ -13,6 +14,9 @@ module.exports = function(){
         resave: false,
         saveUninitialized: true
     }));
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     //check NODE_ENV is Development or production
     if(process.env.NODE_ENV === 'development'){
