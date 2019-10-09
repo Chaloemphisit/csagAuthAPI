@@ -19,11 +19,7 @@ module.exports = function(){
     app.use(passport.session());
 
     //check NODE_ENV is Development or production
-    if(process.env.NODE_ENV === 'development'){
-        app.use(morgan('dev'))
-    }else{
-        app.use(compression);
-    }
+    process.env.NODE_ENV === 'development' ? app.use(morgan('dev')) : app.use(compression);
     
     app.use(bodyParser.urlencoded({
         extended:true
